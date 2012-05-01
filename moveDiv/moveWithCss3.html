@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Text for move div</title>
+		<style>
+			
+			.contain{
+				position:relative;
+			}
+			.divMove{
+				width:150px;
+				height:110px;
+				border:blue solid 3px;				
+				z-index:10;		
+				position:absolute;	
+				left:3px;
+				top:4px;
+				-moz-animation:myMove 10s;
+			}
+			@-moz-keyframes myMove
+			{
+				0%{
+					width:150px;
+					height:110px;
+					top:3px;
+					left:4px;
+				}
+				30%{
+					width:150px;
+					height:110px;
+					top:246px;
+					left:4px;
+				}
+				60%{
+					width:150px;
+					height:110px;
+					top:246px;
+					left:327px;
+				}
+				61%{
+					width:150px;
+					height:110px;
+					top:136px;
+					left:327px;
+				}
+				80%{
+					top:4px;
+					left:160px;
+					width:320px;
+					height:230px;
+				}
+				82%{
+					top:4px;
+					left:160px;
+					width:150px;
+					height:110px;
+				}
+				100%{
+					width:150px;
+					height:110px;
+					top:3px;
+					left:4px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main" class="contain">
+			<img src="textMove.jpg" alt="textPic" />
+			<div id="moveDiv" class="divMove"></div>
+		</div>
+		<!--<script>
+			function readOutsideCss(id,property)  //javascript 取内联样式的值
+			{
+				var propertyValue;
+				if(id.currentStyle)
+			    {
+					propertyValue=id.currentStyle[property];
+				}
+				else if(window.getComputedStyle)
+				{
+					propertyValue=window.getComputedStyle(id,null)[property];
+				}
+				return propertyValue;
+			}
+			
+			function moveFun()
+			{
+				var moveDiv=document.getElementById("moveDiv");
+				var left=parseInt(readOutsideCss(moveDiv,"left"));
+				var top=parseInt(readOutsideCss(moveDiv,"top"));
+				function interval()
+				{
+					if(top<246)
+					{
+						top++;
+					}
+					if(top==246)
+					{
+						left++;
+					}
+					moveDiv.style.top=top+"px";
+					moveDiv.style.left=left+"px";		
+					if(top!=246||left!=327)
+					{
+						setTimeout(interval,50);
+					}
+				}
+				setTimeout(interval,50);
+			}
+			window.onload=moveFun;
+		</script>-->
+	</body>
+</html>

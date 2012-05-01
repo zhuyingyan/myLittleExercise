@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <select id="city1" name="city1">                //所在省份
+    <option value="01">北京</option>
+    <option value="02">上海</option>
+    <option value="03">天津</option>
+    <option value="04">重庆</option>
+    <option value="05">黑龙江</option>
+    <option value="06">广东</option>
+  </select>
+  <select id="city2" name="city2">             //根据所选的省份，列出该省份的城市
+    <option value="0101">北京</option>
+    <option value="0201">上海</option>
+    <option value="0301">天津</option>
+    <option value="0401">重庆</option>
+    <option value="0501">哈尔滨</option>
+    <option value="0502">齐齐哈尔</option>
+    <option value="0503">牡丹江</option>
+    <option value="0504">佳木斯</option>
+    <option value="0505">绥化</option>
+    <option value="0506">黑河</option>
+    <option value="0507">大兴安岭</option>
+    <option value="0508">伊春</option>
+    <option value="0509">大庆</option>
+    <option value="0510">七台河</option>
+    <option value="0511">鸡西</option>
+    <option value="0512">鹤岗</option>
+    <option value="0513">双鸭山</option>
+    <option value="0601">广州</option>
+    <option value="0602">韶关</option>
+    <option value="0603">惠州</option>
+    <option value="0604">梅州</option>
+    <option value="0605">汕头</option>
+    <option value="0606">深圳</option>
+    <option value="0607">珠海</option>
+    <option value="0608">佛山</option>
+    <option value="0609">肇庆</option>
+    <option value="0610">湛江</option>
+    <option value="0611">江门</option>
+    <option value="0612">河源</option>
+    <option value="0613">清远</option>
+    <option value="0614">云浮</option>
+    <option value="0615">潮州</option>
+    <option value="0616">东莞</option>
+    <option value="0617">中山</option>
+    <option value="0618">阳江</option>
+    <option value="0619">揭阳</option>
+    <option value="0620">茂名</option>
+    <option value="0621">汕尾</option>
+  </select>
+  <div></div>
+  <script type="text/javascript">
+  $(function(){
+		var $array=$("#city2 option");
+		var kk=[];
+		$.each($array,function(key,value){
+			kk.push(value);
+		});
+		$("#city2").empty();
+      $("#city1").change(function () {
+			  $("#city2").empty();
+              var str="";
+              str +=$("#city1 :selected").attr("value");
+			  for(var i=0;i<kk.length;i++)
+			  {
+					if(kk[i].value.indexOf(str)==0)
+					{
+						$("#city2").append(kk[i]);
+					}
+			  }
+			          
+              $("#city2 [value^='"+ str +"']").eq(0).attr("selected","true");
+              //$("div").eq(0).html("<strong>你选中的是："+str+"</strong>");
+        }).trigger('change');
+  });
+  </script>
+</body>
+</html>
