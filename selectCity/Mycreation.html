@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Mycreation</title>
+		<style>
+		*{
+		padding:0;
+		margin:0;
+		}
+		a{
+			color:#000;
+			text-decoration:none;
+		}
+		body{
+		background-color:black;	
+		}
+		.myBg{
+		background-color:black;
+		background-image:
+					-moz-radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+					-moz-radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+					-moz-radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+					-moz-radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+		background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; 
+		background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+		width:100%;
+		height:550px;
+		}
+		.myInfo{
+			background:rgb(115,22,28);
+			display:block;
+			position:absolute;
+			left:500px;
+			top:200px;
+			-moz-animation:myInfos 7s linear;
+			border-radius:5px;
+			width:300px;
+			height:200px;
+			color:rgba(255,255,255,1);
+			cursor:pointer;
+			z-index:10;
+		}
+		@-moz-keyframes myInfos{
+			0%{
+				left:0;
+				top:0;
+				color:rgba(255,255,255,0);
+			}
+			20%{
+				left:100px;
+				top:200px;
+				color:rgba(255,255,255,0.5);
+			}
+			30%{
+				left:200px;
+				top:100px;
+				color:rgba(255,255,255,0.8);
+			}
+			50%{
+				left:300px;
+				top:200px;
+				color:rgba(255,255,255,0.9);
+			}
+			70%{
+				left:400px;
+				top:150px;
+				color:rgba(255,255,255,1);
+			}
+			100%{
+				left:500px;
+				top:200px;
+				color:rgba(255,255,255,1);
+			}
+		}
+		.link{
+			display:none;
+			width:960px;
+			margin:0 auto;
+		}
+		.linkAdd{
+			display:block;
+			width:960px;
+			height:600px;
+			margin:20px auto;
+			background:rgb(115,22,28);
+			-moz-animation:mylink 5s;
+			border-radius:20px;
+		}
+		@-moz-keyframes mylink{
+			0%{
+				width:0;
+				height:0;
+			}
+			100%{
+				width:960px;
+				height:600px;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<div class="myBg">
+			<div id="information" class="myInfo">
+				<p>您好，我是朱颖妍。</p>
+				<p>我喜欢编码，热爱前端。</p>
+				<p>以下是我的作品链接：</p>
+			</div>
+			<div class="link" id="myLink">
+				<p>我的作品链接：</p>
+				<ul>
+					<li>练习：
+						<ul>
+							<li><a href="#">弹出框</a></li>
+							<li><a href="#">移动框</a></li>
+							<li><a href="#">选择城市</a></li>
+							<li><a href="#">页面重构</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			function comeOut()
+			{
+				var myLink=document.getElementById("myLink");
+				if(myLink.style.display=="block")
+				{
+					return ture;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			function timeup(){
+				function timeEnd(){
+					var information=document.getElementById("information");
+					information.style.display="none";
+				}
+				setTimeout(timeEnd,10000);
+				function timeOpen()
+				{
+					var flag=comeOut();
+					if(!flag)
+					{
+						var myLink=document.getElementById("myLink");
+						myLink.style.display="block";
+						myLink.className="linkAdd";
+					}
+				}
+				setTimeout(timeOpen,10010);
+			}
+			function info()
+			{
+				var information=document.getElementById("information");
+				information.onclick=function()
+				{
+					this.style.display="none";
+					var myLink=document.getElementById("myLink");
+					myLink.style.display="block";
+					myLink.className="linkAdd";
+			
+				}
+			}
+			function addLoadEvent(func){
+				var oldonload=window.onload;
+				if(typeof window.onload!='function')
+				{
+					window.onload=func;
+				}
+				else{
+					window.onload=function(){
+					oldonload();
+					func();
+					}
+				}
+			
+			}
+			addLoadEvent(info);
+			addLoadEvent(timeup);
+			
+		</script>
+	</body>
+</html>

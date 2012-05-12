@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Transition Test</title>
+		<style>
+			.transitionTest{
+				width:200px;
+				height:300px;
+				background: #ace;
+				-webkit-transition:height 1s cubic-bezier(0,1,1,2),width 1s cubic-bezier(0,1,1,2);
+				-moz-transition:height 1s cubic-bezier(0,1,1,2),width 1s cubic-bezier(0,1,1,2);
+				-o-transition:height 1s cubic-bezier(0,1,1,2),width 1s cubic-bezier(0,1,1,2);
+				background-image: -moz-linear-gradient(transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5)),
+				-moz-linear-gradient(0deg, transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5));
+				background-image: -webkit-linear-gradient(transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5)),
+				-webkit-linear-gradient(0deg, transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5));
+				background-size: 20px 20px; 
+			}
+			.transitionTest2{
+				width:500px;
+				height:400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="transitionTest" id="change"></div>
+		<script>
+			function change()
+			{
+				var div=document.getElementById("change");
+				div.onclick=function()
+				{
+					if(this.className=="transitionTest")
+					{
+						this.className+=" transitionTest2";
+					}
+					else
+					{
+						this.className="transitionTest";
+					}
+				}
+			}
+			window.onload=change;
+		</script>
+		<div>Please click the div and see what happen.</div>
+	</body>
+</html>

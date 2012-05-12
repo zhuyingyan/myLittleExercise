@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>baidu </title>
+		<style>
+			div{
+				width:72px;
+				height:72px;
+				background:url(write.png);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="me"></div>
+	<body>
+	<script>
+		
+		function my()
+		{	
+			 var lefts=[0,-72,-144,-216,-288,-360,-432,0,-144,-288,-432,0,-216,0,-216,0];	
+			 var tops=[0,-72,-144,-216,-288];
+			 var widths=[72,144,216,216,216];
+			 var time=[6,10,12,14,15];
+			 var me=document.getElementById("me");
+			 var i=0,j=0;
+			function showMe()
+			{
+				i++;
+				me.style.width=widths[j]+"px";
+				me.style.backgroundPosition=lefts[i]+"px "+tops[j]+"px";
+				if(i<time[j])
+				{
+					setTimeout(showMe,1000);
+				}
+				else
+				{
+					if(j<time.length)
+					{
+						j++;setTimeout(showMe,1000);
+					}
+				}
+			}
+			setTimeout(showMe,1000);
+			
+		}	
+		window.onload=my;
+	</script>
+</html>
